@@ -4,32 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OpenBoard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
         <h1>OpenBoard</h1>
-        <a href="">Entrar</a>
-        <button>Publicar vaga $299</button>
+        <div>
+            <a href="">Entrar</a>
+            <button class="btn">Publicar vaga $299</button>
+        </div>
     </header>
 
-    <section>
+    <section class="hero">
         <h2>As melhores vagas em startups de tecnologia</h2>
         <p>Encontre oportunidades reais em empresas curadas. Sem cadastros, sem barreiras.</p>
-        <button>Publicar vaga $299</button>
+        <button class="btn">Publicar vaga $299 -></button>
     </section>
 
-    <main>
-        <section>
-            <h2>Ùltimas Vagas</h2>
-            <span>7 Vagas - Atualizar agora</span>
+    <main class="content">
+        <section class="vagas">
 
-            <div>
-                <small>Vercel</small>
+            <div class="vagas__header">
+                <h2>Ùltimas Vagas</h2>
+                <span>7 Vagas - Atualizar agora</span>
+            </div>
+
+            <div class="vagas__card">
                 <img src="" alt="logo">
-                <p>Full-Stack Engineer</p>
-                <span>R$ 20K-30K</span>
-                <span>Remoto</span>
+                <div>
+                    <small>Vercel</small>
+                    <p>Full-Stack Engineer</p>
+                    <span>R$ 20K-30K</span>
+                    <span>Remoto</span> 
+                </div>
                 <span>4h</span>
                 <a href="">Candidatar-se</a>
             </div>
@@ -55,11 +63,13 @@
             </div>
 
         </section>
-        <aside>
-            <h3>Filtros</h3>
-            <a href="">Limpar</a>
+        <aside class="filters">
+            <div class="filters__header">
+                <h3>Filtros</h3>
+                <a href="">Limpar</a>
+            </div>
 
-            <div>
+            <div class="filters__items">
                 <p>Tipo de vaga</p>
                 
                 <label for="check_efetivo">
@@ -75,8 +85,9 @@
                 </label>
             </div>
         </aside>
+
         <aside>
-            <div>
+            <div class="filters__items">
                 <p>Area</p>
                 
                 <label for="check_engenharia">
