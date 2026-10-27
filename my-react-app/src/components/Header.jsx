@@ -4,8 +4,8 @@ function Header(){
         <header>
             <h1>OpenBoard</h1>
             <div>
-                <a href="">Entrar</a>
-                <button className="btn">Publicar Vaga - $299</button>
+                <a id="link-google" href="http://google.com">Entrar</a>
+                <button className="btn">Publicar vaga $299</button>
             </div>
         </header>
         </>
