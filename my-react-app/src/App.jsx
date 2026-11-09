@@ -1,39 +1,36 @@
-import { useState } from 'react'
-import './App.css'
+import './App.css';
 
-import Header from './components/Header'
-import Footer from './components/Footer'
-import Hero from './components/Hero'
-import News from './components/News'
-import Depoimentos from './components/Depoimentos'
-import Vagas from './components/Vagas'
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Hero from './components/Hero';
+import News from './components/News';
+import Depoimentos from './components/Depoimentos';
+import Vagas from './components/Vagas';
 
-import vagas from './data/vagas'
+import vagas from './data/vagas';
+import depoimentos from './data/depoimentos';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      
-    <Header></Header>
-    <Hero
-      titulo="As melhores vagas em startups de tecnologia"
-      subtitulo="Encontre oportunidades reais em empresas curadas. Sem cadastro, sem barreiras."
-    >
-      <button id="btn-hero" className="btn">Publicar vaga $299</button>
-    </Hero>
+      <Header />
 
-    <main className="conteudo">
-      <Vagas vagas={vagas} ></Vagas>
-    </main>
+      <Hero
+        titulo="As melhores vagas em startups de tecnologia"
+        subtitulo="Encontre oportunidades reais em empresas curadas. Sem cadastro, sem barreiras."
+      >
+        <button id="btn-hero" className="btn">Publicar vaga $299</button>
+      </Hero>
 
-    <News></News>
-    <Depoimentos></Depoimentos>
-    <Footer></Footer>
-    
+      <main className="conteudo">
+        <Vagas vagas={vagas} />
+      </main>
+
+      <News />
+      <Depoimentos depoimentos={depoimentos} />
+      <Footer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

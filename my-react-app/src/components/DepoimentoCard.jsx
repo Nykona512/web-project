@@ -1,15 +1,11 @@
-function DepoimentoCard({ declaracao, usuario, cargo }) {
+function DepoimentoCard({ texto, nome, cargo }) {
   return (
-    <>
-    <div className="depoimentos__list">
-      <div>
-        <p>{declaracao}</p>
-        {/* <img src="" alt="avatar"/> */}
-        <p>{usuario}</p>
-        <span>{cargo}</span>
-      </div>
+    <div>
+      <p>"{texto}"</p>
+      {/* <img src="" alt="avatar" /> */}
+      <p>{nome}</p>
+      <span>{cargo}</span>
     </div>
-    </>
   );
 }
 

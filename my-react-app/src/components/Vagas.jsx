@@ -1,69 +1,90 @@
-import { useEffect } from "react"
-import VagaCard from "./VagaCard"
+import { useEffect, useState } from 'react';
+import VagaCard from './VagaCard';
 
-function Vagas({vagas}){
-    
-    useEffect(() => {
-        document.title = `${vagas.length} vagas | OpenBoard`;
-    }, [vagas.length]);
+const TIPOS = ['Efetivo', 'Estágio', 'Temporário'];
+const AREAS = ['Engenharia', 'Design', 'Gestão'];
 
-    return (
-        <>
-        <section className="vagas">
+function Vagas({ vagas }) {
+  const [tiposMarcados, setTiposMarcados] = useState([]);
+  const [areasMarcadas, setAreasMarcadas] = useState([]);
 
-            <div className="vagas__header">
-                <h2>Últimas Vagas</h2>
-                <span>{vagas.length} vagas - Atualizado agora</span>
-            </div>
+  // Marca/desmarca um item sempre criando um array novo (spread / filter)
+  function alternar(lista, setLista, valor) {
+    if (lista.includes(valor)) {
+      setLista(lista.filter((item) => item !== valor));
+    } else {
+      setLista([...lista, valor]);
+    }
+  }
 
-            {vagas.map((vaga) => (
-                <VagaCard
-                    key={vaga.id}
-                    empresa={vaga.empresa}
-                    cargo={vaga.cargo}
-                    salario={vaga.salario}
-                    modelo={vaga.modelo}
-                    publicada={vaga.publicada}
-                ></VagaCard>
-            ))}
+  function limpar(e) {
+    e.preventDefault(); // o link não deve navegar
+    setTiposMarcados([]);
+    setAreasMarcadas([]);
+  }
 
-            
+  // Dentro de um grupo vale "ou"; entre grupos vale "e". Grupo vazio = sem filtro.
+  const vagasFiltradas = vagas.filter((vaga) => {
+    const passaTipo = tiposMarcados.length === 0 || tiposMarcados.includes(vaga.tipo);
+    const passaArea = areasMarcadas.length === 0 || areasMarcadas.includes(vaga.area);
+    return passaTipo && passaArea;
+  });
 
-        </section>
-        <aside className="filtros">
-            <div className="filtros__header">
-                <h3>Filtros</h3>
-                <a href="">limpar</a>
-            </div>
+  useEffect(() => {
+    document.title = `${vagasFiltradas.length} vagas | OpenBoard`;
+  }, [vagasFiltradas.length]);
 
-            <div className="filtros__itens">
-                <p>Tipo de vaga</p>
-                <label htmlFor="check_efetivo">
-                    <input type="checkbox" name="check_efetivo" id="check_efetivo"/> Efetivo
-                </label>
-                <label htmlFor="check_estagio">
-                    <input type="checkbox" name="check_estagio" id="check_estagio"/> Estágio
-                </label>
-                <label htmlFor="check_temp">
-                    <input type="checkbox" name="check_temp" id="check_temp"/> Temporário
-                </label>
-            </div>
+  return (
+    <>
+      <section className="vagas">
+        <div className="vagas__header">
+          <h2>Últimas Vagas</h2>
+          <span>{vagasFiltradas.length} vagas - Atualizado agora</span>
+        </div>
 
-            <div className="filtros__itens">
-                <p>Área</p>
-                <label htmlFor="check_eng">
-                    <input type="checkbox" name="check_eng" id="check_eng"/> Engenharia
-                </label>
-                <label htmlFor="check_design">
-                    <input type="checkbox" name="check_design" id="check_design"/> Design
-                </label>
-                <label htmlFor="check_gestao">
-                    <input type="checkbox" name="check_gestao" id="check_gestao"/> Gestão
-                </label>
-            </div>
-        </aside>
-        </>
-    )
+        {vagasFiltradas.length === 0 && <p>Nenhuma vaga encontrada.</p>}
+
+        {vagasFiltradas.map((vaga) => (
+          <VagaCard key={vaga.id} {...vaga} />
+        ))}
+      </section>
+
+      <aside className="filtros">
+        <div className="filtros__header">
+          <h3>Filtros</h3>
+          <a href="" onClick={limpar}>limpar</a>
+        </div>
+
+        <div className="filtros__itens">
+          <p>Tipo de vaga</p>
+          {TIPOS.map((tipo) => (
+            <label key={tipo}>
+              <input
+                type="checkbox"
+                checked={tiposMarcados.includes(tipo)}
+                onChange={() => alternar(tiposMarcados, setTiposMarcados, tipo)}
+              />{' '}
+              {tipo}
+            </label>
+          ))}
+        </div>
+
+        <div className="filtros__itens">
+          <p>Área</p>
+          {AREAS.map((area) => (
+            <label key={area}>
+              <input
+                type="checkbox"
+                checked={areasMarcadas.includes(area)}
+                onChange={() => alternar(areasMarcadas, setAreasMarcadas, area)}
+              />{' '}
+              {area}
+            </label>
+          ))}
+        </div>
+      </aside>
+    </>
+  );
 }
 
-export default Vagas
+export default Vagas;

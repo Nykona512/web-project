@@ -19,7 +19,7 @@ function News(){
     return(
         <>
         <Hero
-            titulo="Vagas novas, toda quita-feira"
+            titulo="Vagas novas, toda quinta-feira"
             subtitulo="Um resumo curto das melhores vagas em startups direto no seu inbox."
         >
 
