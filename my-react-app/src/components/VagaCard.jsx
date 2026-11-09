@@ -1,6 +1,7 @@
-function VagaCard({ empresa, cargo, salario, modelo, publicada }) {
+import { Link } from 'react-router';
+
+function VagaCard({ id, empresa, cargo, salario, modelo, publicada }) {
   return (
-    <>
     <div className="vagas__card">
       <div className="vagas__avatar">{empresa[0]}</div>
       <div className="vagas__body">
@@ -13,10 +14,9 @@ function VagaCard({ empresa, cargo, salario, modelo, publicada }) {
       </div>
       <div className="vagas__actions">
         <span>{publicada}</span>
-        <a href="">Candidatar-se</a>
+        <Link to={`/vagas/${id}`}>Ver vaga</Link>
       </div>
     </div>
-    </>
   );
 }
 

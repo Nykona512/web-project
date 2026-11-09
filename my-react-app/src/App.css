@@ -192,3 +192,37 @@ footer{
         border-top: 1px solid #e5e5e3;
     }
 }
+
+/* ---- Aula 15: loading, erro e páginas ---- */
+.vagas__vazio{
+    width: 100%;
+    padding: 40px;
+    text-align: center;
+    color: #999999;
+}
+
+.erro{
+    color: #b00020;
+}
+
+.sucesso{
+    color: #1a7f37;
+}
+
+.pagina{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+}
+
+.vaga__topo{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.vaga__descricao{
+    margin-top: 24px;
+    line-height: 1.6;
+}

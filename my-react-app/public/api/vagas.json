@@ -1,0 +1,79 @@
+[
+  {
+    "id": 1,
+    "empresa": "Lumen",
+    "cargo": "Full-stack Engineer",
+    "salario": "R$ 20k-30k",
+    "modelo": "Remoto",
+    "tipo": "Efetivo",
+    "area": "Engenharia",
+    "publicada": "4h",
+    "descricao": "Você vai construir funcionalidades de ponta a ponta, do banco de dados à interface em React. Trabalhamos em times pequenos, com deploy contínuo e muita autonomia."
+  },
+  {
+    "id": 2,
+    "empresa": "Satc",
+    "cargo": "Front-End Engineer",
+    "salario": "R$ 15k-25k",
+    "modelo": "Remoto",
+    "tipo": "Efetivo",
+    "area": "Engenharia",
+    "publicada": "2h",
+    "descricao": "Responsável por evoluir a interface dos nossos portais acadêmicos com React. Buscamos quem goste de componentização, acessibilidade e código limpo."
+  },
+  {
+    "id": 3,
+    "empresa": "Google",
+    "cargo": "Analista de dados",
+    "salario": "R$ 30k-40k",
+    "modelo": "Remoto",
+    "tipo": "Efetivo",
+    "area": "Engenharia",
+    "publicada": "6h",
+    "descricao": "Transforme grandes volumes de dados em decisões. Você vai criar análises, dashboards e modelos estatísticos junto de times de produto."
+  },
+  {
+    "id": 4,
+    "empresa": "Microsoft",
+    "cargo": "Analista de sistemas",
+    "salario": "R$ 50k-60k",
+    "modelo": "Remoto",
+    "tipo": "Efetivo",
+    "area": "Engenharia",
+    "publicada": "5h",
+    "descricao": "Levantamento de requisitos, modelagem e acompanhamento da entrega de sistemas corporativos de grande porte, em contato direto com o cliente."
+  },
+  {
+    "id": 5,
+    "empresa": "Carbono",
+    "cargo": "Product Designer",
+    "salario": "R$ 3k-4k",
+    "modelo": "Híbrido",
+    "tipo": "Estágio",
+    "area": "Design",
+    "publicada": "1d",
+    "descricao": "Estágio para quem quer aprender design de produto na prática: pesquisa com usuários, protótipos no Figma e handoff para o time de desenvolvimento."
+  },
+  {
+    "id": 6,
+    "empresa": "Nubank",
+    "cargo": "Product Manager",
+    "salario": "R$ 18k-28k",
+    "modelo": "Presencial",
+    "tipo": "Efetivo",
+    "area": "Gestão",
+    "publicada": "8h",
+    "descricao": "Defina o roadmap de um produto, priorize o backlog com base em dados e alinhe engenharia, design e negócio para entregar valor ao cliente."
+  },
+  {
+    "id": 7,
+    "empresa": "Vercel",
+    "cargo": "UI Designer (projeto)",
+    "salario": "R$ 8k-12k",
+    "modelo": "Remoto",
+    "tipo": "Temporário",
+    "area": "Design",
+    "publicada": "3h",
+    "descricao": "Contrato de 3 meses para redesenhar o painel de configurações da plataforma, entregando biblioteca de componentes e guia de estilos."
+  }
+]
