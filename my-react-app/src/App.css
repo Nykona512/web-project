@@ -18,8 +18,17 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 16px;
     padding: 16px 40px;
     border-bottom: 1px solid #e5e5e3;
+}
+
+header > div{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
 }
 
 .hero{
@@ -32,7 +41,9 @@ header{
 }
 
 .hero p{
-    margin-bottom: 32px
+    margin: 0 auto 32px;
+    max-width: 680px;
+    line-height: 1.6;
 }
 
 .btn{
@@ -43,6 +54,8 @@ header{
     padding: 12px 20px;
     font-size: 14px;
     font-weight: bold;
+    cursor: pointer;
+    max-width: 100%;
 }
 
 .conteudo{
@@ -53,12 +66,14 @@ header{
 
 .vagas{
     width: 100%;
+    min-width: 0;
     padding-left: 40px;
 }
 
 .vagas__header{
     display: flex;
     justify-content: space-between;
+    gap: 12px;
     margin-bottom: 40px;
 }
 
@@ -66,6 +81,7 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 12px;
     width: 100%;
     padding: 16px;
     margin: 8px 0;
@@ -85,11 +101,13 @@ header{
     background-color: #333;
     color: #ffffff;
     border-radius: 4px;
+    flex-shrink: 0;
 }
 
 .vagas__body{
-    width: 100%;
-    padding-left: 40px;
+    flex: 1;
+    min-width: 0;
+    padding-left: 12px;
 }
 
 .vagas__title{
@@ -97,9 +115,12 @@ header{
     font-size: 32px;
     font-weight: 600;
     color: #333;
+    overflow-wrap: anywhere;
 }
 
 .vagas__badge{
+    display: inline-block;
+    margin: 0 6px 6px 0;
     padding: 4px 8px;
     background-color: #e5e5e3;
     border-radius: 4px;
@@ -112,11 +133,15 @@ header{
 .vagas__actions{
     display: flex;
     flex-direction: column;
-    width: 200px;
+    flex: 0 0 150px;
+    width: 150px;
+    gap: 8px;
+    text-align: right;
 }
 
 .filtros{
     width: 220px;
+    flex: 0 0 220px;
 }
 
 .filtros__header{
@@ -154,42 +179,240 @@ header{
 
 .depoimentos__list{
     display: flex;
+    width: 100%;
+    max-width: 1200px;
     padding-top: 40px;
     gap: 32px;
+}
+
+.depoimentos__list > div{
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: anywhere;
 }
 
 footer{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 16px;
     padding: 16px 40px;
 }
 
+footer nav{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 16px;
+}
+
+
+/* RF1: ajustes progressivos para tablet e celular. */
+@media (max-width: 900px){
+    .hero{
+        padding: 80px 24px;
+    }
+
+    .conteudo{
+        padding: 24px;
+    }
+
+    .vagas{
+        padding-left: 24px;
+    }
+
+    .filtros{
+        width: 200px;
+        flex-basis: 200px;
+    }
+
+    .depoimentos{
+        padding: 72px 24px;
+    }
+
+    footer{
+        padding: 24px;
+    }
+}
 
 @media (max-width: 768px){
+    header{
+        flex-wrap: wrap;
+        padding: 16px 20px;
+    }
+
+    header h1{
+        font-size: 26px;
+    }
+
+    .hero{
+        padding: 64px 20px;
+    }
+
+    .hero h2{
+        font-size: clamp(28px, 7vw, 40px);
+        line-height: 1.2;
+        overflow-wrap: anywhere;
+    }
+
+    .conteudo{
+        flex-direction: column-reverse;
+        gap: 24px;
+        padding: 24px 20px;
+    }
+
+    /* Os filtros permanecem disponíveis no celular, acima das vagas. */
     .filtros{
-        display: none;
+        display: block;
+        width: 100%;
+        flex: 0 1 auto;
+        padding: 16px;
+        border: 1px solid #dddddd;
+        border-radius: 8px;
+        background: #ffffff;
+    }
+
+    .vagas{
+        width: 100%;
+        padding-left: 0;
     }
 
     .vagas__header{
         flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        margin-bottom: 24px;
     }
 
     .vagas__card{
         flex-direction: column;
-        align-items: start;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .vagas__avatar{
+        width: 48px;
+        height: 48px;
+        margin: 0;
     }
 
     .vagas__body{
-        padding-left: 10px;
-        padding-bottom: 40px;
+        width: 100%;
+        padding: 0;
+    }
+
+    .vagas__title{
+        font-size: clamp(20px, 5vw, 26px);
+        padding-bottom: 12px;
     }
 
     .vagas__actions{
+        flex: 0 1 auto;
         width: 100%;
-        padding: 10px;
+        padding: 12px 0 0;
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
+        gap: 12px;
         border-top: 1px solid #e5e5e3;
+        text-align: left;
+    }
+
+    .cadastro form{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .cadastro input{
+        flex: 1 1 220px;
+        min-width: 0;
+        max-width: 100%;
+    }
+
+    .depoimentos{
+        padding: 64px 20px;
+        text-align: center;
+    }
+
+    .depoimentos__list{
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        padding-top: 24px;
+    }
+
+    .depoimentos__list > div{
+        flex: 1 1 auto;
+        width: 100%;
+        max-width: 560px;
+    }
+
+    footer{
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px 20px;
+    }
+
+    footer nav{
+        justify-content: flex-start;
+    }
+
+    .pagina{
+        padding: 24px 20px;
+    }
+}
+
+@media (max-width: 420px){
+    header{
+        justify-content: center;
+        text-align: center;
+    }
+
+    header h1{
+        width: 100%;
+    }
+
+    header > div{
+        width: 100%;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    header .btn{
+        padding: 10px 14px;
+    }
+
+    .hero{
+        padding: 56px 16px;
+    }
+
+    .conteudo{
+        padding: 24px 16px;
+    }
+
+    .vagas__card{
+        padding: 14px;
+    }
+
+    .cadastro form{
+        flex-direction: column;
+    }
+
+    .cadastro input,
+    .cadastro .btn{
+        width: 100%;
+        flex: 0 1 auto;
+    }
+
+    .depoimentos{
+        padding: 56px 16px;
+    }
+
+    footer{
+        padding: 24px 16px;
     }
 }
 
