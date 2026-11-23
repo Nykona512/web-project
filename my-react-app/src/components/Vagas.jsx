@@ -17,8 +17,7 @@ function Vagas({ vagas }) {
     }
   }
 
-  function limpar(e) {
-    e.preventDefault(); // o link não deve navegar
+  function limpar() {
     setTiposMarcados([]);
     setAreasMarcadas([]);
   }
@@ -39,10 +38,10 @@ function Vagas({ vagas }) {
       <section className="vagas">
         <div className="vagas__header">
           <h2>Últimas Vagas</h2>
-          <span>{vagasFiltradas.length} vagas - Atualizado agora</span>
+          <span aria-live="polite">{vagasFiltradas.length} vagas - Atualizado agora</span>
         </div>
 
-        {vagasFiltradas.length === 0 && <p>Nenhuma vaga encontrada.</p>}
+        {vagasFiltradas.length === 0 && <p role="status">Nenhuma vaga encontrada</p>}
 
         {vagasFiltradas.map((vaga) => (
           <VagaCard key={vaga.id} {...vaga} />
@@ -52,7 +51,9 @@ function Vagas({ vagas }) {
       <aside className="filtros">
         <div className="filtros__header">
           <h3>Filtros</h3>
-          <a href="" onClick={limpar}>limpar</a>
+          <button type="button" className="filtros__limpar" onClick={limpar}>
+            limpar
+          </button>
         </div>
 
         <div className="filtros__itens">

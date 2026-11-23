@@ -149,6 +149,17 @@ header > div{
     justify-content: space-between;
 }
 
+/* RF4: ação de limpar filtros sem navegação ou recarregamento. */
+.filtros__limpar{
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .filtros__itens{
     display: flex;
     flex-direction: column;
