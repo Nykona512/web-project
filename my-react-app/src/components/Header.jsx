@@ -1,3 +1,5 @@
+import { Link } from 'react-router';
+
 function Header(){
     return (
         <>
@@ -5,7 +7,7 @@ function Header(){
             <h1>OpenBoard</h1>
             <div>
                 <a id="link-google" href="http://google.com">Entrar</a>
-                <button className="btn">Publicar vaga $299</button>
+                <Link className="btn" to="/publicar">Publicar vaga $299</Link>
             </div>
         </header>
         </>

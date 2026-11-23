@@ -491,3 +491,112 @@ footer nav{
     margin-top: 24px;
     line-height: 1.6;
 }
+
+/* RF7: cadastro de vagas. Classe distinta de .cadastro (newsletter). */
+.btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.cadastro-vaga h2{
+    font-size: clamp(26px, 4vw, 36px);
+    margin-bottom: 12px;
+}
+
+.cadastro-vaga__introducao{
+    margin-bottom: 28px;
+    line-height: 1.6;
+    color: #555555;
+}
+
+.cadastro-vaga__formulario{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 16px;
+}
+
+.cadastro-vaga__campo{
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cadastro-vaga__campo label{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.cadastro-vaga__campo input,
+.cadastro-vaga__campo select,
+.cadastro-vaga__campo textarea{
+    display: block;
+    width: 100%;
+    min-width: 0;
+    padding: 12px 14px;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #111111;
+    font: inherit;
+}
+
+.cadastro-vaga__campo textarea{
+    resize: vertical;
+    min-height: 112px;
+}
+
+.cadastro-vaga__campo input:focus-visible,
+.cadastro-vaga__campo select:focus-visible,
+.cadastro-vaga__campo textarea:focus-visible{
+    outline: 2px solid #333333;
+    outline-offset: 2px;
+}
+
+.cadastro-vaga__campo--largo,
+.cadastro-vaga__erro{
+    grid-column: 1 / -1;
+}
+
+.cadastro-vaga__enviar{
+    justify-self: start;
+}
+
+.cadastro-vaga__confirmacao > p{
+    margin: 8px 0 24px;
+}
+
+.cadastro-vaga__confirmacao .vagas__card{
+    align-items: flex-start;
+}
+
+.vagas__detalhes{
+    margin-top: 12px;
+    color: #333333;
+    font-size: 14px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.cadastro-vaga__voltar{
+    display: inline-block;
+    margin-top: 24px;
+}
+
+@media (max-width: 600px){
+    .cadastro-vaga__formulario{
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+    }
+
+    .cadastro-vaga__enviar{
+        justify-self: stretch;
+    }
+
+    .cadastro-vaga__confirmacao .vagas__card{
+        flex-direction: column;
+    }
+}

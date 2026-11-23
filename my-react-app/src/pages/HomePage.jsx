@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import { useState, useEffect } from 'react';
 import { buscarVagas } from '../services/vagasService';
 import Hero from '../components/Hero';
@@ -29,7 +30,7 @@ function HomePage() {
         titulo="As melhores vagas em startups de tecnologia"
         subtitulo="Encontre oportunidades reais em empresas curadas. Sem cadastro, sem barreiras."
       >
-        <button id="btn-hero" className="btn">Publicar vaga $299</button>
+        <Link id="btn-hero" className="btn" to="/publicar">Publicar vaga $299</Link>
       </Hero>
 
       <main className="conteudo">
