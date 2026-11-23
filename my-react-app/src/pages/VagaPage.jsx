@@ -1,31 +1,56 @@
-import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router';
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router';
 import { buscarVaga } from '../services/vagasService';
 
-function VagaPage() {
-  const { id } = useParams(); // /vagas/3 → "3"
+function DetalhesVaga({ id }) {
   const [vaga, setVaga] = useState(null);
   const [loading, setLoading] = useState(true);
   const [erro, setErro] = useState('');
 
   useEffect(() => {
+    let ativo = true;
+
     async function carregar() {
       try {
-        setVaga(await buscarVaga(id));
+        const resultado = await buscarVaga(id);
+        if (ativo) setVaga(resultado);
       } catch (err) {
-        setErro(err.message);
+        if (ativo) {
+          setErro(err instanceof Error ? err.message : 'Não foi possível carregar a vaga.');
+        }
       } finally {
-        setLoading(false);
+        if (ativo) setLoading(false);
       }
     }
-    carregar();
-  }, [id]); // roda de novo se o id mudar
 
-  if (loading) return <p className="pagina">Carregando...</p>;
-  if (erro) return <p className="pagina erro">{erro}</p>;
+    carregar();
+
+    // Evita atualizar um componente que já saiu da tela.
+    return () => {
+      ativo = false;
+    };
+  }, [id]);
+
+  if (loading) {
+    return (
+      <main className="pagina">
+        <p role="status">Carregando vaga...</p>
+      </main>
+    );
+  }
+
+  if (erro) {
+    return (
+      <main className="pagina">
+        <h2>Não foi possível abrir a vaga</h2>
+        <p className="erro" role="alert">{erro}</p>
+        <Link to="/">← Voltar para as vagas</Link>
+      </main>
+    );
+  }
 
   return (
-    <section className="pagina">
+    <main className="pagina">
       <Link to="/">← Voltar para as vagas</Link>
       <div className="vaga__topo">
         <div className="vagas__avatar">{vaga.empresa[0]}</div>
@@ -39,8 +64,15 @@ function VagaPage() {
         <span className="vagas__badge">{vaga.modelo}</span>
       </p>
       <p className="vaga__descricao">{vaga.descricao}</p>
-    </section>
+    </main>
   );
+}
+
+function VagaPage() {
+  const { id } = useParams();
+
+  // Ao mudar /vagas/:id, o componente recomeça do estado de carregamento.
+  return <DetalhesVaga key={id} id={id} />;
 }
 
 export default VagaPage;
