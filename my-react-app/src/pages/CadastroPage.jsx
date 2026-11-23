@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router';
 import VagaCard from '../components/VagaCard';
+import { salvarVagaLocal } from '../utils/vagasStorage';
 
 const CAMPOS_INICIAIS = {
   empresa: '',
@@ -37,13 +38,20 @@ function CadastroPage() {
       return; // Mantém os valores e não envia o formulário.
     }
 
-    setErro('');
-    setVagaCriada({
+    const novaVaga = {
       id: Date.now(),
       ...dados,
       publicada: 'agora',
-    });
-    // O armazenamento no localStorage será implementado no RF8.
+    };
+
+    try {
+      salvarVagaLocal(novaVaga);
+      setErro('');
+      setVagaCriada(novaVaga);
+    } catch {
+      // Se o navegador bloquear o armazenamento, não mostramos sucesso falso.
+      setErro('Não foi possível salvar a vaga. Verifique o armazenamento do navegador.');
+    }
   }
 
   return (

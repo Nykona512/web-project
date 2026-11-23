@@ -1,3 +1,5 @@
+import { listarVagasSalvas } from '../utils/vagasStorage';
+
 const BASE_URL = '/api';
 
 const esperar = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -33,7 +35,8 @@ export async function buscarVagas() {
 
 export async function buscarVaga(id) {
   const vagas = await buscarVagas();
-  const vaga = vagas.find((v) => v.id === Number(id));
+  const todasAsVagas = [...vagas, ...listarVagasSalvas()];
+  const vaga = todasAsVagas.find((v) => v.id === Number(id));
   if (!vaga) throw new Error(`Vaga #${id} não encontrada.`);
   return vaga;
 }

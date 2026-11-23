@@ -1,6 +1,7 @@
 import { Link } from 'react-router';
 import { useState, useEffect } from 'react';
 import { buscarVagas } from '../services/vagasService';
+import { listarVagasSalvas } from '../utils/vagasStorage';
 import Hero from '../components/Hero';
 import Vagas from '../components/Vagas';
 import News from '../components/News';
@@ -14,7 +15,9 @@ function HomePage() {
   useEffect(() => {
     async function carregar() {
       try {
-        setVagas(await buscarVagas());
+        const vagasDaApi = await buscarVagas();
+        const vagasCadastradas = listarVagasSalvas();
+        setVagas([...vagasDaApi, ...vagasCadastradas]);
       } catch (err) {
         setErro(err.message);
       } finally {
