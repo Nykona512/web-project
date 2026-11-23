@@ -7,6 +7,7 @@ const AREAS = ['Engenharia', 'Design', 'Gestão'];
 function Vagas({ vagas }) {
   const [tiposMarcados, setTiposMarcados] = useState([]);
   const [areasMarcadas, setAreasMarcadas] = useState([]);
+  const [busca, setBusca] = useState('');
 
   // Marca/desmarca um item sempre criando um array novo (spread / filter)
   function alternar(lista, setLista, valor) {
@@ -20,13 +21,17 @@ function Vagas({ vagas }) {
   function limpar() {
     setTiposMarcados([]);
     setAreasMarcadas([]);
+    setBusca('');
   }
 
   // Dentro de um grupo vale "ou"; entre grupos vale "e". Grupo vazio = sem filtro.
+  const termoBusca = busca.trim().toLocaleLowerCase('pt-BR');
+
   const vagasFiltradas = vagas.filter((vaga) => {
     const passaTipo = tiposMarcados.length === 0 || tiposMarcados.includes(vaga.tipo);
     const passaArea = areasMarcadas.length === 0 || areasMarcadas.includes(vaga.area);
-    return passaTipo && passaArea;
+    const passaBusca = vaga.cargo.toLocaleLowerCase('pt-BR').includes(termoBusca);
+    return passaTipo && passaArea && passaBusca;
   });
 
   useEffect(() => {
@@ -39,6 +44,17 @@ function Vagas({ vagas }) {
         <div className="vagas__header">
           <h2>Últimas Vagas</h2>
           <span aria-live="polite">{vagasFiltradas.length} vagas - Atualizado agora</span>
+        </div>
+
+        <div className="vagas__busca">
+          <label htmlFor="busca-cargo">Buscar por cargo</label>
+          <input
+            id="busca-cargo"
+            type="search"
+            placeholder="Ex.: design"
+            value={busca}
+            onChange={(event) => setBusca(event.target.value)}
+          />
         </div>
 
         {vagasFiltradas.length === 0 && <p role="status">Nenhuma vaga encontrada</p>}
