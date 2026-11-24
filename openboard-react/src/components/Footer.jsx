@@ -1,20 +1,21 @@
-function Footer(){
-    return (
-        <>
-        <footer>
-            <p>
-                <strong>OpenBoard</strong> 2026 - Todos os direitos reservados
-            </p>
+import { Link } from 'react-router';
 
-            <nav>
-                <a href="">Entrar</a>
-                <a href="">Publicar vaga</a>
-                <a href="">Sobre</a>
-                <a href="">Privacidade</a>
-            </nav>
-        </footer>
-        </>
-    )
+function Footer() {
+  return (
+    <footer>
+      <p>
+        <strong>OpenBoard</strong> 2026 - Todos os direitos reservados
+      </p>
+
+      <nav aria-label="Navegação do rodapé">
+        {/* Apenas a página de publicação existe no projeto atualmente. */}
+        <span>Entrar</span>
+        <Link to="/publicar">Publicar vaga</Link>
+        <span>Sobre</span>
+        <span>Privacidade</span>
+      </nav>
+    </footer>
+  );
 }
 
-export default Footer
+export default Footer;
