@@ -173,11 +173,19 @@ header > div{
 .filtros{
     width: 220px;
     flex: 0 0 220px;
+    align-self: flex-start;
+    padding: 16px;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    background: #ffffff;
 }
 
 .filtros__header{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
 }
 
 /* RF4: ação de limpar filtros sem navegação ou recarregamento. */
@@ -201,7 +209,7 @@ header > div{
 .filtros__itens p{
     font-size: 12px;
     font-weight: bold;
-    margin: 8px 0;
+    margin: 12px 0 4px;
 }
 
 .cadastro input{
@@ -599,4 +607,135 @@ footer nav{
     .cadastro-vaga__confirmacao .vagas__card{
         flex-direction: column;
     }
+}
+
+/* Extra: alternância de tema no Header, sem alterar o visual claro existente. */
+.tema-botao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    max-width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #a1a1aa;
+    border-radius: 8px;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.tema-botao:hover {
+    background: #e5e5e3;
+}
+
+.tema-botao:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 3px;
+}
+
+/* Os seletores abaixo só atuam quando o modo escuro está habilitado. */
+html[data-tema="escuro"] {
+    color-scheme: dark;
+}
+
+html[data-tema="escuro"] body {
+    background-color: #0f172a;
+    color: #e2e8f0;
+}
+
+html[data-tema="escuro"] header {
+    border-bottom-color: #334155;
+}
+
+html[data-tema="escuro"] a:not(.btn) {
+    color: #93c5fd;
+}
+
+html[data-tema="escuro"] .btn {
+    color: #0f172a;
+    background-color: #e2e8f0;
+}
+
+html[data-tema="escuro"] .tema-botao {
+    color: #f8fafc;
+    border-color: #64748b;
+    background: #1e293b;
+}
+
+html[data-tema="escuro"] .tema-botao:hover {
+    background: #334155;
+}
+
+html[data-tema="escuro"] .tema-botao:focus-visible,
+html[data-tema="escuro"] .vagas__busca input:focus-visible,
+html[data-tema="escuro"] .cadastro-vaga__campo input:focus-visible,
+html[data-tema="escuro"] .cadastro-vaga__campo select:focus-visible,
+html[data-tema="escuro"] .cadastro-vaga__campo textarea:focus-visible {
+    outline-color: #93c5fd;
+}
+
+html[data-tema="escuro"] .vagas__card,
+html[data-tema="escuro"] .filtros {
+    background-color: #1e293b;
+    border-color: #475569;
+    color: #cbd5e1;
+}
+
+html[data-tema="escuro"] .vagas__title,
+html[data-tema="escuro"] .vagas__detalhes {
+    color: #f8fafc;
+}
+
+html[data-tema="escuro"] .vagas__badge {
+    color: #e2e8f0;
+    background-color: #334155;
+}
+
+html[data-tema="escuro"] .vagas__badge--highlight {
+    border-color: #64748b;
+}
+
+html[data-tema="escuro"] .vagas__actions {
+    border-top-color: #475569;
+}
+
+html[data-tema="escuro"] .vagas__avatar {
+    background-color: #475569;
+    color: #fff;
+}
+
+html[data-tema="escuro"] .vagas__busca input,
+html[data-tema="escuro"] .cadastro input,
+html[data-tema="escuro"] .cadastro-vaga__campo input,
+html[data-tema="escuro"] .cadastro-vaga__campo select,
+html[data-tema="escuro"] .cadastro-vaga__campo textarea {
+    background-color: #1e293b;
+    color: #f8fafc;
+    border-color: #64748b;
+}
+
+html[data-tema="escuro"] input::placeholder,
+html[data-tema="escuro"] textarea::placeholder {
+    color: #cbd5e1;
+    opacity: 1;
+}
+
+html[data-tema="escuro"] input[type="checkbox"] {
+    accent-color: #93c5fd;
+}
+
+html[data-tema="escuro"] .cadastro-vaga__introducao,
+html[data-tema="escuro"] .vagas__vazio {
+    color: #cbd5e1;
+}
+
+html[data-tema="escuro"] .erro {
+    color: #fda4af;
+}
+
+html[data-tema="escuro"] .sucesso {
+    color: #86efac;
 }
